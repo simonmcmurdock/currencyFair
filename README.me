@@ -1,12 +1,12 @@
-## Synopsis
+Synopsis
 
 The frontend is located at /index.php and the api is located in the /api directory, messages to be processed should be posted to /api/message
 
-##API
+API
 
  I have built the API using a MVC REST architecture. The API will return a JSON array containing a status and the http response code will be set to either 200, 404, 400, 429, 403,or 405 depending on what has happened. The .htacces file in the /api directory rewrites any requests to the api folder that don't have an extension to index.php?request= where request is set to what comes after the api directory so /api/message gets rewritten to /api/index.php?request=message. I have built it this way so that if we wanted to expand my api and add more end points we would just need to add another if($request==) condition to /api/index.php. The end point that should be hit to process a message is api/message. If the message is valid it will be stored in a mysql database and passed onto a node.js socket server for processing and will be dynamically added to the front end. I have implemented rate limiting by storing the number of hits in a memcached array, I have done this way it so that I don't have to query the database to determine if a user has reached their limit, which will improve performance and increase the scalability of the API.
  
- ##Message Processor
+ Message Processor
  
  I have implimented the message processor using node.js and a socket.io server. The files for the message processor are located in the socket_server directory. You can start the socket server by navigating to the socket_server directory and running the following commands:
  
@@ -15,14 +15,14 @@ The frontend is located at /index.php and the api is located in the /api directo
 
 This will start the socket server on port 3000, once the server is running it will listen for messages from our api which are sent using elephant.io when it recieves a message from the api it will proccess the data emit the processed data to the connected front end clients.
 
-##Frontend
+Frontend
 
 The frontend is located at /index.php and built using using an MVC architecture. The front end displays a table containing the 10 most recent messages along with a heat map which shows the originating country of the 1,000 most recent messages. Both the heat map and table will update automatically when a message is processed from the API.
 
-## Tests
+Tests
 
 The unit tests are located in the Tests directory and were implemented using PHPUnit and Mockery, they can be ran by typing the command phpunit in the root directory
 
-## Documentation
+Documentation
 The code is documented using DocBlocks syntax.
 
