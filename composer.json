@@ -1,0 +1,27 @@
+{
+    "require": {
+        "wisembly/elephant.io": "3.1.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+         "Mockery/Mockery": ">=0.7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "API\\": "controllers",
+            "messagesAPI\\": "controllers",
+            "messageController\\": "controllers",
+            "messagesModelInterface\\": "models",
+            "messagesModel\\": "models",
+            "dbModule\\": "modules",
+            "RateLimiter\\": "modules",
+            "MessagesRateLimiter\\": "modules",
+            "socketEmmiter\\": "modules",
+            "ResponseModuleJSON\\": "modules",
+            "ResponseModule\\": "modules"
+            
+            
+
+        }
+    }
+}

@@ -1,0 +1,7 @@
+RewriteEngine on 
+
+RewriteRule \.(php|html|htm|gif|jpg|png|css|js|xml|swf|ico|jar|eot|svg|ttf|woff|pdf|zip|skin|lic)$ - [L]
+
+RewriteRule  (.*) index.php?request=$1 [QSA]
+
+
